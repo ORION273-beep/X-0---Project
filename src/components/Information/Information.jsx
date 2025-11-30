@@ -1,7 +1,11 @@
-import { store } from '../../store';
+// src/components/Information/Information.jsx
+import { useSelector } from 'react-redux';
 
 export const Information = () => {
-  const { currentPlayer, winner } = store.getState();
+  const { currentPlayer, winner } = useSelector((state) => ({
+    currentPlayer: state.currentPlayer,
+    winner: state.winner,
+  }));
 
   const getStatus = () => {
     if (winner === 'draw') return 'Ничья!';

@@ -1,19 +1,13 @@
-import { useEffect, useState } from 'react';
-import { store } from './store';
-import { restart } from './actions';
-
+// src/App.jsx
 import { Information } from './components/Information/Information';
 import { Field } from './components/Field/Field';
+import { useDispatch } from 'react-redux';
+import { restartGame } from './store/actions';
 
-function App() {
-  const [, forceUpdate] = useState({});
+export default function App() {
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    const unsubscribe = store.subscribe(() => forceUpdate({}));
-    return unsubscribe;
-  }, []);
-
-  const handleReset = () => store.dispatch(restart());
+  const handleReset = () => dispatch(restartGame());
 
   return (
     <div className="game">
@@ -26,5 +20,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

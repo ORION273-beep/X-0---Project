@@ -1,11 +1,15 @@
+// src/index.jsx  ← теперь это правильная точка входа!
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import '/src/index.css';
+import { Provider } from 'react-redux';
 import App from './App';
+import { store } from './store/store';
+import './index.css';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>
 );
